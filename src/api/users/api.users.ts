@@ -7,6 +7,6 @@ export const QUERY = {
   GET_USERS: "GET_USERS"
 };
 
-export const getUsers = ({ query }: { query: string }) => {
-  return getRequest<UsersSearch>(`${PATH}`, { q: query });
+export const getUsers = ({ query, page }: { query: string; page: string }) => {
+  return getRequest<UsersSearch>(`${PATH}`, { q: query, page, per_page: "50" });
 };

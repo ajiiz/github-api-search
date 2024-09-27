@@ -1,10 +1,13 @@
-import { Alert, Avatar, Container, Grid2, Skeleton, Snackbar, Typography } from "@mui/material";
+import { Alert, Grid2, Snackbar, Typography } from "@mui/material";
 import { ApiError } from "api/api.helpers";
 import { getUsers, QUERY } from "api/users/api.users";
 import { getUsersErrors } from "api/users/api.users.errors";
 import { useState } from "react";
-import { isError, useQuery } from "react-query";
+import InfiniteScroll from "react-infinite-scroller";
+import { useInfiniteQuery } from "react-query";
 import { GridProps } from "./Grid.types";
+import { GridItem } from "./GridItem/GridItem";
+import { GridSkeleton } from "./GridSkeleton/GridSkeleton";
 
 export const Grid = ({ searchValue }: GridProps) => {
   const [snackbar, setSnackbar] = useState<{
@@ -17,12 +20,17 @@ export const Grid = ({ searchValue }: GridProps) => {
     severity: "error"
   });
 
-  const { data, isLoading, isFetched } = useQuery({
+  const { data, isFetched, hasNextPage, fetchNextPage, isError } = useInfiniteQuery({
     queryKey: [QUERY.GET_USERS, searchValue],
-    queryFn: () => getUsers({ query: searchValue }),
+    queryFn: ({ pageParam = 1 }) => getUsers({ query: searchValue, page: pageParam }),
     enabled: !!searchValue,
     refetchOnWindowFocus: false,
     retry: false,
+    getNextPageParam: (lastPage, pages) => {
+      const lastPageData = lastPage.data;
+      const nextPage = pages.length * 50 + 1;
+      return nextPage <= lastPageData.total_count ? nextPage : undefined;
+    },
     onError: (error: ApiError) => {
       const message = getUsersErrors(error);
       setSnackbar({ open: true, message, severity: "error" });
@@ -31,7 +39,8 @@ export const Grid = ({ searchValue }: GridProps) => {
       setSnackbar({ open: true, message: "Success: Users fetched successfully", severity: "success" });
     }
   });
-  const users = data?.data?.items || [];
+
+  const users = data?.pages.flatMap(page => page.data.items) || [];
 
   const handleSnackbarClose = () => {
     setSnackbar({ open: false, message: "", severity: "error" });
@@ -48,23 +57,20 @@ export const Grid = ({ searchValue }: GridProps) => {
 
   return (
     <>
-      <Grid2 container spacing={2} justifyContent="center">
-        {isLoading
-          ? Array.from(new Array(3)).map((_, index) => (
-              <Grid2 key={index} component={Container} sx={{ textAlign: "center" }} size={{ xs: 12, sm: 4 }}>
-                <Skeleton variant="circular" width={80} height={80} />
-                <Skeleton variant="text" sx={{ mt: 2, mb: 1 }} />
-              </Grid2>
-            ))
-          : users.map(user => (
-              <Grid2 key={user.id} component={Container} sx={{ textAlign: "center" }} size={{ xs: 12, sm: 4 }}>
-                <Avatar alt={user.login} src={user.avatar_url} sx={{ width: 80, height: 80, margin: "0 auto" }} />
-                <Typography variant="h6" sx={{ mt: 2 }}>
-                  {user.login}
-                </Typography>
-              </Grid2>
-            ))}
-      </Grid2>
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={() => {
+          fetchNextPage();
+        }}
+        hasMore={hasNextPage}
+        loader={<GridSkeleton />}
+      >
+        <Grid2 container spacing={2} justifyContent="center">
+          {users.map(user => (
+            <GridItem key={user.id} user={user} />
+          ))}
+        </Grid2>
+      </InfiniteScroll>
       <Snackbar open={snackbar.open} autoHideDuration={5000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: "100%" }}>
           {snackbar.message}
