@@ -1,7 +1,9 @@
+import { Layout } from "@pages/Layout/Layout";
+
 const App = () => {
   return (
     <>
-      <p>Hello World</p>
+      <Layout />
     </>
   );
 };
