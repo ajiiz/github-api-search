@@ -13,13 +13,13 @@ export const Form = ({ handleSearchChange }: FormProps) => {
     watch
   } = useForm({
     resolver: yupResolver(schema),
-    mode: "onTouched"
+    mode: "onChange"
   });
   const username = watch("username");
   const debounceValue = useDebounce({ value: username, delay: 2000 });
 
   useEffect(() => {
-    if (debounceValue) {
+    if (debounceValue && !errors.username) {
       handleSearchChange(debounceValue);
     }
   }, [debounceValue]);
