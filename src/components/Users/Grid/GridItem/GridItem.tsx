@@ -1,5 +1,5 @@
+import { GridItemProps } from "@components/Users/Grid/GridItem/GridItem.types";
 import { Avatar, Container, Grid2, Typography } from "@mui/material";
-import { GridItemProps } from "./GridItem.types";
 
 export const GridItem = ({ user }: GridItemProps) => {
   return (

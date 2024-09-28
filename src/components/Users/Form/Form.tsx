@@ -1,10 +1,10 @@
+import { FormProps } from "@components/Users/Form/Form.types";
+import { schema } from "@components/Users/Form/validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@mui/material";
 import { useDebounce } from "@utils/hooks/useDebounce";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { FormProps } from "./Form.types";
-import { schema } from "./validationSchema";
 
 export const Form = ({ handleSearchChange }: FormProps) => {
   const {

@@ -1,6 +1,6 @@
 import { axiosClient } from "./api.service";
 
-export type ApiError = Error & { status: number; data: { errorCode: string } };
+export type ApiError = Error & { status: number; response: { data: { message: string } } };
 
 export const STATUS = {
   unauthorized: 401,
