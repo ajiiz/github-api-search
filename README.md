@@ -1,8 +1,8 @@
-#### Github API Search
+# Github API Search
 
 Application to fetch github users.
 
-#### Technologies
+## Technologies
 
 - Typescript
 - Vite
@@ -12,6 +12,6 @@ Application to fetch github users.
 - React hook form + yup
 - MUI Components
 
-#### Contact me via e-mail: piotrwrobel.ajiiz@gmail.com
+## Contact me via e-mail: piotrwrobel.ajiiz@gmail.com
 
 Initialized with 🖤
