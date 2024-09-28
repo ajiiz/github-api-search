@@ -27,7 +27,8 @@
       "@components/*": ["components/*"],
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@sections/*": ["sections/*"]
     },
 
     /* Types */

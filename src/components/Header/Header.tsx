@@ -1,4 +1,4 @@
-import { HeaderProps } from "@components/common/Header/Header.types";
+import { HeaderProps } from "@components/Header/Header.types";
 import { Typography } from "@mui/material";
 
 export const Header = ({ title = "Welcome to the Github User Search", description = "Enter a username to search for a user" }: HeaderProps) => {

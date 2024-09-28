@@ -1,4 +1,4 @@
-import { UserData } from "./GridItem/GridItem.types";
+import { UserData } from "@sections/users/components/Grid/GridItem/GridItem.types";
 
 export type GridProps = {
   searchValue: string;

@@ -1,4 +1,4 @@
-import { Header } from "@components/common/Header/Header";
+import { Header } from "@components/Header/Header";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

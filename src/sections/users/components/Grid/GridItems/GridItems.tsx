@@ -1,6 +1,6 @@
-import { GridItem } from "@components/Users/Grid/GridItem/GridItem";
-import { GridItemsProps } from "@components/Users/Grid/GridItems/GridItem.types";
 import { Grid2 } from "@mui/material";
+import { GridItem } from "@sections/users/components/Grid/GridItem/GridItem";
+import { GridItemsProps } from "@sections/users/components/Grid/GridItems/GridItem.types";
 
 export const GridItems = ({ users }: GridItemsProps) => {
   return (

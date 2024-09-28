@@ -1,5 +1,5 @@
-import { GridItem } from "@components/Users/Grid/GridItem/GridItem";
-import { GridItemProps } from "@components/Users/Grid/GridItem/GridItem.types";
+import { GridItem } from "@sections/users/components/Grid/GridItem/GridItem";
+import { GridItemProps } from "@sections/users/components/Grid/GridItem/GridItem.types";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 

@@ -1,7 +1,7 @@
-import { FormProps } from "@components/Users/Form/Form.types";
-import { schema } from "@components/Users/Form/validationSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TextField } from "@mui/material";
+import { FormProps } from "@sections/users/components/Form/Form.types";
+import { schema } from "@sections/users/components/Form/validationSchema";
 import { useDebounce } from "@utils/hooks/useDebounce/useDebounce";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";

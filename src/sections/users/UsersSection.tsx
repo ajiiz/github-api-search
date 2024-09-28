@@ -1,8 +1,8 @@
-import { Form } from "@components/Users/Form/Form";
-import { Grid } from "@components/Users/Grid/Grid";
+import { Form } from "@sections/users/components/Form/Form";
+import { Grid } from "@sections/users/components/Grid/Grid";
 import { useState } from "react";
 
-export const Users = () => {
+export const UsersSection = () => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
