@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
+import { useDebounce } from "@utils/hooks/useDebounce/useDebounce";
 import { describe, expect, it, vi } from "vitest";
-import { useDebounce } from "./useDebounce";
 
 describe("useDebounce Hook", () => {
   vi.useFakeTimers();

@@ -1,7 +1,7 @@
+import { GridItem } from "@components/Users/Grid/GridItem/GridItem";
+import { GridItemProps } from "@components/Users/Grid/GridItem/GridItem.types";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { GridItem } from "./GridItem";
-import { GridItemProps } from "./GridItem.types";
 
 describe("GridItem Component", () => {
   const user: GridItemProps["user"] = {

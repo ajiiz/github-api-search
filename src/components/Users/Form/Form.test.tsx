@@ -1,8 +1,8 @@
+import { Form } from "@components/Users/Form/Form";
 import { FormProps } from "@components/Users/Form/Form.types";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { useDebounce } from "@utils/hooks/useDebounce/useDebounce";
 import { beforeEach, describe, expect, it, Mock, vi } from "vitest";
-import { Form } from "./Form";
 
 vi.mock("@utils/hooks/useDebounce/useDebounce", () => ({
   useDebounce: vi.fn()
