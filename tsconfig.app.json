@@ -28,7 +28,10 @@
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"],
       "@config/*": ["config/*"]
-    }
+    },
+
+    /* Types */
+    "types": ["vitest"]
   },
   "include": ["./src", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

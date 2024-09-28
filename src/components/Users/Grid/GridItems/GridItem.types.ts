@@ -1,5 +1,5 @@
-import { UserSearchItem } from "api/api.types";
+import { UserData } from "@components/Users/Grid/GridItem/GridItem.types";
 
 export type GridItemsProps = {
-  users: UserSearchItem[];
+  users: UserData[];
 };

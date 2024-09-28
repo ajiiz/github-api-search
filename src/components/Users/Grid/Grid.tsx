@@ -68,7 +68,7 @@ export const Grid = ({ searchValue }: GridProps) => {
         hasMore={!isError && hasNextPage}
         loader={<GridSkeleton />}
       >
-        <GridItems key={1} users={users} />
+        <GridItems users={users} />
       </InfiniteScroll>
       <Snackbar open={snackbar.open} autoHideDuration={5000} onClose={handleSnackbarClose}>
         <Alert onClose={handleSnackbarClose} severity={snackbar.severity} sx={{ width: "100%" }}>
